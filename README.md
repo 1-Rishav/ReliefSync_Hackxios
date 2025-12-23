@@ -119,32 +119,32 @@ ReliefSync is a full-stack disaster relief management platform designed to strea
 
 #### Complete Frontend Stack
 
-| Category | Technology | Version |
-|----------|------------|---------|
-| **Core** | React | 19.1.0 |
-| | Vite | 6.3.5 |
-| | React Router DOM | 7.6.0 |
-| **Styling** | TailwindCSS | 4.1.14 |
-| | HeroUI | 2.8.0-beta.6 |
-| | Framer Motion | 12.15.0 |
-| | GSAP | 3.13.0 |
-| **State** | Redux Toolkit | 2.8.2 |
-| | Redux Persist | 6.0.0 |
-| | TanStack Query | 5.84.1 |
-| **Maps** | Leaflet | 1.9.4 |
-| | React Leaflet | 5.0.0 |
-| | Turf.js | 7.2.0 |
-| **Web3** | RainbowKit | 2.2.8 |
-| | Wagmi | 2.16.1 |
-| | Viem | 2.33.2 |
-| **Forms** | React Hook Form | 7.56.4 |
-| | Zod | 3.25.46 |
-| **Real-time** | Socket.IO Client | 4.8.1 |
-| | OneSignal | 3.2.3 |
-| **HTTP** | Axios | 1.13.2 |
-| **Utils** | JWT Decode | 4.0.0 |
-| | HTML5 QRCode | 2.3.8 |
-| | DOMPurify | 3.2.7 |
+| Category | Technology | Version | Icon |
+|----------|------------|---------|------|
+| **Core** | React | 19.1.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20"/> |
+| | Vite | 6.3.5 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" width="20" height="20"/> |
+| | React Router DOM | 7.6.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg" width="20" height="20"/> |
+| **Styling** | TailwindCSS | 4.1.14 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width="20" height="20"/> |
+| | HeroUI | 2.8.0-beta.6 | <img src="https://img.shields.io/badge/H-HeroUI-7c3aed?style=flat" height="20"/> |
+| | Framer Motion | 12.15.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg" width="20" height="20"/> |
+| | GSAP | 3.13.0 | <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat&logo=greensock&logoColor=white" height="20"/> |
+| **State** | Redux Toolkit | 2.8.2 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" width="20" height="20"/> |
+| | Redux Persist | 6.0.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" width="20" height="20"/> |
+| | TanStack Query | 5.84.1 | <img src="https://img.shields.io/badge/TQ-TanStack-FF4154?style=flat" height="20"/> |
+| **Maps** | Leaflet | 1.9.4 | <img src="https://img.shields.io/badge/🍃-Leaflet-199900?style=flat" height="20"/> |
+| | React Leaflet | 5.0.0 | <img src="https://img.shields.io/badge/🍃-React_Leaflet-199900?style=flat" height="20"/> |
+| | Turf.js | 7.2.0 | <img src="https://img.shields.io/badge/🌍-Turf.js-3FB911?style=flat" height="20"/> |
+| **Web3** | RainbowKit | 2.2.8 | <img src="https://img.shields.io/badge/🌈-RainbowKit-7B3FE4?style=flat" height="20"/> |
+| | Wagmi | 2.16.1 | <img src="https://img.shields.io/badge/W-Wagmi-000000?style=flat" height="20"/> |
+| | Viem | 2.33.2 | <img src="https://img.shields.io/badge/V-Viem-1C1C1C?style=flat" height="20"/> |
+| **Forms** | React Hook Form | 7.56.4 | <img src="https://img.shields.io/badge/📋-RHF-EC5990?style=flat" height="20"/> |
+| | Zod | 3.25.46 | <img src="https://img.shields.io/badge/Z-Zod-3E67B1?style=flat" height="20"/> |
+| **Real-time** | Socket.IO Client | 4.8.1 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/socketio/socketio-original.svg" width="20" height="20"/> |
+| | OneSignal | 3.2.3 | <img src="https://img.shields.io/badge/🔔-OneSignal-E54B4D?style=flat" height="20"/> |
+| **HTTP** | Axios | 3.2.3 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg" width="20" height="20"/> |
+| **Utils** | JWT Decode | 4.0.0 | <img src="https://img.shields.io/badge/🔐-JWT-000000?style=flat" height="20"/> |
+| | HTML5 QRCode | 2.3.8 | <img src="https://img.shields.io/badge/📱-QRCode-000000?style=flat" height="20"/> |
+| | DOMPurify | 3.2.7 | <img src="https://img.shields.io/badge/🛡️-DOMPurify-4A90E2?style=flat" height="20"/> |
 
 ### Backend Technologies
 
@@ -171,31 +171,31 @@ ReliefSync is a full-stack disaster relief management platform designed to strea
 
 #### Complete Backend Stack
 
-| Category | Technology | Version |
-|----------|------------|---------|
-| **Core** | Node.js | 18+ |
-| | Express | 5.1.0 |
-| **Database** | MongoDB | 6.16.0 |
-| | Mongoose | 8.15.0 |
-| **Auth** | JWT | 9.0.2 |
-| | bcrypt | 6.0.0 |
-| | Google Auth | 10.0.0 |
-| **Security** | Helmet | 8.1.0 |
-| | CORS | 2.8.5 |
-| | Rate Limit | 7.5.0 |
-| | Mongo Sanitize | 2.2.0 |
-| **Real-time** | Socket.IO | 4.8.1 |
-| **AI/ML** | OpenAI | 6.6.0 |
-| | Earth Engine | 1.5.24 |
-| **Files** | Cloudinary | 2.7.0 |
-| | Multer | 1.4.5 |
-| | FFmpeg | 5.3.0 |
-| **Payment** | Razorpay | 2.9.6 |
-| **Geo** | H3-js | 4.2.1 |
-| **Utils** | Axios | 1.13.2 |
-| | QRCode | 1.5.4 |
-| | Cron | 4.3.3 |
-| | UUID | 13.0.0 |
+| Category | Technology | Version | Icon |
+|----------|------------|---------|------|
+| **Core** | Node.js | 18+ | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="20" height="20"/> |
+| | Express | 5.1.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="20" height="20"/> |
+| **Database** | MongoDB | 6.16.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="20" height="20"/> |
+| | Mongoose | 8.15.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original.svg" width="20" height="20"/> |
+| **Auth** | JWT | 9.0.2 | <img src="https://img.shields.io/badge/🔐-JWT-000000?style=flat" height="20"/> |
+| | bcrypt | 6.0.0 | <img src="https://img.shields.io/badge/🔒-bcrypt-003A70?style=flat" height="20"/> |
+| | Google Auth | 10.0.0 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" width="20" height="20"/> |
+| **Security** | Helmet | 8.1.0 | <img src="https://img.shields.io/badge/⛑️-Helmet-000000?style=flat" height="20"/> |
+| | CORS | 2.8.5 | <img src="https://img.shields.io/badge/🌐-CORS-FF6B6B?style=flat" height="20"/> |
+| | Rate Limit | 7.5.0 | <img src="https://img.shields.io/badge/⏱️-RateLimit-orange?style=flat" height="20"/> |
+| | Mongo Sanitize | 2.2.0 | <img src="https://img.shields.io/badge/🧹-Sanitize-47A248?style=flat" height="20"/> |
+| **Real-time** | Socket.IO | 4.8.1 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/socketio/socketio-original.svg" width="20" height="20"/> |
+| **AI/ML** | OpenAI | 6.6.0 | <img src="https://img.shields.io/badge/🤖-OpenAI-412991?style=flat" height="20"/> |
+| | Earth Engine | 1.5.24 | <img src="https://img.shields.io/badge/🌍-EarthEngine-4285F4?style=flat" height="20"/> |
+| **Files** | Cloudinary | 2.7.0 | <img src="https://img.shields.io/badge/☁️-Cloudinary-3448C5?style=flat" height="20"/> |
+| | Multer | 1.4.5 | <img src="https://img.shields.io/badge/📁-Multer-FF6600?style=flat" height="20"/> |
+| | FFmpeg | 5.3.0 | <img src="https://img.shields.io/badge/🎬-FFmpeg-007808?style=flat" height="20"/> |
+| **Payment** | Razorpay | 2.9.6 | <img src="https://img.shields.io/badge/💳-Razorpay-0C2451?style=flat" height="20"/> |
+| **Geo** | H3-js | 4.2.1 | <img src="https://img.shields.io/badge/⬡-H3-1C1C1C?style=flat" height="20"/> |
+| **Utils** | Axios | 1.13.2 | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg" width="20" height="20"/> |
+| | QRCode | 1.5.4 | <img src="https://img.shields.io/badge/📱-QRCode-000000?style=flat" height="20"/> |
+| | Cron | 4.3.3 | <img src="https://img.shields.io/badge/⏰-Cron-000000?style=flat" height="20"/> |
+| | UUID | 13.0.0 | <img src="https://img.shields.io/badge/🆔-UUID-000000?style=flat" height="20"/> |
 
 ---
 
