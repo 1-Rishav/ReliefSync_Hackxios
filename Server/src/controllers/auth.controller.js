@@ -65,19 +65,19 @@ exports.sendOtp = catchAsync(async (req, res, next) => {
 
         //Send otp to user email
         await axios.post(
-    "https://api.mailersend.com/v1/email",
+    "https://api.brevo.com/v3/smtp/email",
     {
-      from: {
-        email: `noreply@${process.env.EMAIL}`,
+      sender: {
         name: 'ReliefSync',
+        email: `${process.env.EMAIL}`,
       },
       to: [{ email: user.email }],
       subject: "Verification OTP",
-      text: `Welcome to ReliefSync platform, your OTP is ${newOtp}. It is valid for 5 minutes. Thank from ReliefSync team.`,
+      textContent: `Welcome to ReliefSync platform, your OTP is ${newOtp}. It is valid for 5 minutes. Thank from ReliefSync team.`,
     },
     {
       headers: {
-        Authorization: `Bearer ${process.env.MAILERSEND_API_KEY}`,
+        "api-key": process.env.BREVO_API_KEY,
         "Content-Type": "application/json",
       },
     }
@@ -187,19 +187,19 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
         const resetUrl = `${process.env.FRONTEND_URL}/auth/reset-password?token=${resetToken}`;
 
         await axios.post(
-    "https://api.mailersend.com/v1/email",
+    "https://api.brevo.com/v3/smtp/email",
     {
-      from: {
-        email: process.env.EMAIL,
+      sender: {
         name: 'ReliefSync',
+        email: process.env.EMAIL,
       },
       to: [{ email: user.email }],
       subject: "Reset Password",
-      html: resetPassword(user.firstName, resetUrl),
+      htmlContent: resetPassword(user.firstName, resetUrl),
     },
     {
       headers: {
-        Authorization: `Bearer ${process.env.MAILERSEND_API_KEY}`,
+        "api-key": process.env.BREVO_API_KEY,
         "Content-Type": "application/json",
       },
     }
