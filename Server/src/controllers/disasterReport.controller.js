@@ -934,40 +934,37 @@ Return JSON only.
   `;
 
   const attachments = [];
-  if (mp3Path && fs.existsSync(mp3Path)) {
-    attachments.push({
-      filename: "voice_message.mp3",
-      content: fs.readFileSync(mp3Path).toString("base64"),
-      disposition: "attachment",
-      type: "audio/mpeg",
-    });
-  }
-  // also attach original for safety
-  if (audioFile?.path && fs.existsSync(audioFile.path)) {
-    attachments.push({
-      filename: "voice_message.webm",
-      content: fs.readFileSync(audioFile.path).toString("base64"),
-      disposition: "attachment",
-      type: "audio/webm",
-    });
-  }
+
+if (mp3Path && fs.existsSync(mp3Path)) {
+  attachments.push({
+    name: "voice_message.mp3",
+    content: fs.readFileSync(mp3Path).toString("base64"),
+  });
+}
+
+if (audioFile?.path && fs.existsSync(audioFile.path)) {
+  attachments.push({
+    name: "voice_message.webm",
+    content: fs.readFileSync(audioFile.path).toString("base64"),
+  });
+}
 
   try {
     await axios.post(
-      "https://api.mailersend.com/v1/email",
+      "https://api.brevo.com/v3/smtp/email",
       {
-        from: {
-          email: process.env.EMAIL,
+        sender: {
           name: "ReliefSync",
+          email: process.env.EMAIL,
         },
         to: [{ email: ngo_Email }],
         subject: subject,
-        html: htmlBody,
-        attachments,
+        htmlContent: htmlBody,
+        attachment:attachments,
       },
       {
         headers: {
-          Authorization: `Bearer ${process.env.MAILERSEND_API_KEY}`,
+          "api-key": process.env.BREVO_API_KEY,
           "Content-Type": "application/json",
         },
       }
