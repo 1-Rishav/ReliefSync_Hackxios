@@ -1965,6 +1965,6 @@ sequenceDiagram
 
 <p align="center">
   <strong>📄 Document Version: 1.0</strong><br/>
-  <em>Last Updated: December 2024</em><br/><br/>
+  <em>Last Updated: December 2025</em><br/><br/>
   <strong>ReliefSync - Coordinating Disaster Relief, Saving Lives</strong>
 </p>

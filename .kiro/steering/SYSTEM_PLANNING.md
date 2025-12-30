@@ -3952,7 +3952,7 @@
 |-------|-------|
 | Document Title | ReliefSync System Planning Document |
 | Version | 1.0 |
-| Last Updated | December 2024 |
+| Last Updated | December 2025 |
 | Status | Complete |
 | Author | ReliefSync Development Team |
 

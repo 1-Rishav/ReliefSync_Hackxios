@@ -2464,7 +2464,7 @@ io.on("connection", (socket) => {
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0 | December 2024 | Initial system design document |
+| 1.0 | December 2025 | Initial system design document |
 
 ---
 
