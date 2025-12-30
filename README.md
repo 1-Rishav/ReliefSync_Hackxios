@@ -823,7 +823,7 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 ---
 
 <p align="center">
-  <strong>Made with 💙 for Disaster Relief Coordination</strong>
+  <strong>Made for Disaster Relief Coordination</strong>
 </p>
 
 <p align="center">
