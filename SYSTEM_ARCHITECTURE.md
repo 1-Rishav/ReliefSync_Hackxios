@@ -1838,7 +1838,7 @@ sequenceDiagram
 │   │   FRONTEND_URL=http://localhost:5173                                            │  │
 │   │                                                                                  │  │
 │   │   # Database                                                                    │  │
-│   │   MONGO_URI=mongodb+srv://user:pass@cluster.mongodb.net/reliefsync             │  │
+│   │   MONGO_URI=mongodb+srv:...........................................             │  │
 │   │                                                                                  │  │
 │   │   # Authentication                                                              │  │
 │   │   JWT_SECRET=your_jwt_secret_key                                                │  │

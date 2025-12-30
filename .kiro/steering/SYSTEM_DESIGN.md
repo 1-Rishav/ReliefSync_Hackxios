@@ -1812,7 +1812,7 @@ SERVER_URL=https://api.reliefsync.com
 FRONTEND_URL=https://reliefsync.com
 
 # Database
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/reliefsync
+MONGODB_URI=mongodb+srv:.............................................
 
 # Authentication
 JWT_SECRET=your_jwt_secret
