@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <em>Version 1.0 | Last Updated: December 2024</em>
+  <em>Version 1.0 | Last Updated: December 2025</em>
 </p>
 
 ---
