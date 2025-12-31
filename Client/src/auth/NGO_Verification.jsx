@@ -34,6 +34,7 @@ const NGO_Verification = () => {
     Official_docs:""
 
   })
+  const [loading , setLoading]=useState(false);
 
   const dispatch = useDispatch();
 
@@ -69,6 +70,7 @@ const NGO_Verification = () => {
   })
 
   const handleSubmit = async()=>{
+    setLoading(true);
     const formData = new FormData();
 
 // Append entered values (text fields)
@@ -86,8 +88,22 @@ if (enteredData.Official_docs instanceof File) {
       await dispatch(ngoEntry(formData))
     } catch (error) {
       console.log(error)
-    }
-    setEnteredData('')
+    } finally {
+    setLoading(false);
+setEnteredData({
+    ngo_Name:"",
+    registrationNumber:"",
+    registrationType:"",
+    stateORcity:"",
+    registeredAddress:"",
+    officialEmail:"",
+    phone:"",
+    founderName:"",
+    website:"",
+    media_link:"",
+    Official_docs:""
+})
+  }
   }
   return (
     <>
@@ -156,9 +172,9 @@ if (enteredData.Official_docs instanceof File) {
           <Input variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' label="NGO Name" type="text" isRequired name="ngo_Name" value={enteredData.ngo_Name} onChange={handleChange} />
           <Input variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' label="Registration Number" type="text" isRequired name="registrationNumber" value={enteredData.registrationNumber} onChange={handleChange}/>
           <div className='flex items-center justify-between w-full h-full gap-4'>
-            <Select className=' flex items-center justify-center ' label="Type of Registration" isRequired variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' name="registrationType" value={enteredData.registrationType} onChange={handleChange}>
+            <Select className=' flex items-center justify-center ' label="Type of Registration" isRequired variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' name="registrationType" value={enteredData.registrationType} onChange={handleChange} selectedKeys={enteredData.registrationType ? [enteredData.registrationType] : []}>
               {registeredType.map((registration) => (
-                <SelectItem key={registration.key}><p>{registration.label}</p></SelectItem>
+                <SelectItem key={registration.key}>{registration.label}</SelectItem>
               ))}
             </Select>
 
@@ -179,7 +195,29 @@ if (enteredData.Official_docs instanceof File) {
           <Input variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' label="Website" type="text" isRequired name="website" value={enteredData.website} onChange={handleChange}/>
           <Input variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' label="Social Media Links" type="text" isRequired name="media_link" value={enteredData.media_link} onChange={handleChange}/>
           <Input variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' label="Official Document" type="file" isRequired name="Official_docs"  onChange={handleChange}/>
-          <Button isDisabled={!isFormComplete} size='md' variant='shadow' color='success' radius='sm' fullWidth onClick={handleSubmit} className='mt-4'>SUBMIT</Button>
+          <Button isLoading={loading}
+          spinner={
+        <svg
+          className="animate-spin h-5 w-5 text-current"
+          fill="none"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          />
+          <path
+            className="opacity-75"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            fill="currentColor"
+          />
+        </svg>
+      } isDisabled={!isFormComplete} size='md' variant='shadow' color='success' radius='sm' fullWidth onClick={handleSubmit} className='mt-4'>SUBMIT</Button>
           
         </div>
       </motion.div>
