@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import { AiOutlineScan } from "react-icons/ai";
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { toast } from "react-toastify";
 
-export function ScanQr({DecodedId}) {
+export function ScanQr({ DecodedId }) {
   const [scanning, setScanning] = useState(false);
   const qrCodeRegionId = "qr-reader";
   const html5QrCodeRef = useRef(null);
 
-  const startScan =async () => {
+  const startScan = async () => {
     if (scanning) return;
 
     try {
@@ -19,12 +19,20 @@ export function ScanQr({DecodedId}) {
         { facingMode: "environment" }, // rear camera
         { fps: 10, qrbox: 250 },
         async (decodedText) => {
-            const decodedToken = jwtDecode(decodedText);
-          // Extract requestId
-          const requestId = decodedToken?.id ;
-          DecodedId(requestId);
-          // Stop scan immediately after first success
-          await stopScan();
+          try {
+            const url = new URL(decodedText);
+            const token = url.searchParams.get("token");
+  
+            if (!token) throw new Error("No token found in QR code");
+            const decodedToken = jwtDecode(token);
+            // Extract requestId
+            const requestId = decodedToken?.id;
+            DecodedId(requestId);
+            // Stop scan immediately after first success
+            await stopScan();
+          } catch (error) {
+            console.error("Scanning error:", err.message);
+          }
         },
         (err) => {
           // ignore scan errors (happens if no QR found per frame)
@@ -57,7 +65,7 @@ export function ScanQr({DecodedId}) {
         onClick={startScan}
         className="p-2 text-2xl flex items-center gap-2"
       >
-        <AiOutlineScan size={60} className="text-green-500 font-bold text-2xl"/>
+        <AiOutlineScan size={60} className="text-green-500 font-bold text-2xl" />
       </button>
 
       <div id={qrCodeRegionId} style={{ width: "200px", marginTop: "10px" }} />
