@@ -1,10 +1,19 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import {anvil,zksync,mainnet,sepolia} from "@wagmi/core/chains";
+import { http } from "viem";
+import {sepolia} from "@wagmi/core/chains";
 
 const rainbowKitConfig = getDefaultConfig({
-    app:"ReliefSync",
+    appName:"ReliefSync",
     projectId:import.meta.env.VITE_PROJECT_ID,
-    chains:[anvil,zksync,mainnet,sepolia],
-    ssr:false
+    chains:[sepolia],
+    ssr:false,
+    transports: {
+      [sepolia.id]: http(import.meta.env.VITE_ALCHEMY_URL, {
+        batch: false,         
+        retryCount: 5,       
+        retryDelay: 1000,     
+        timeout: 60_000,     
+      })
+    },
 })
 export default rainbowKitConfig;
