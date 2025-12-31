@@ -83,7 +83,7 @@ const DeskTopCustomButton = ({ onClick, title }) => (
 
 const WalletConnectionButton = ({ visible }) => (
   <div className={`max-lg:${visible} max-lg:px-8 inline-flex items-center space-x-2 text-sm px-2 py-1 rounded-lg dark:bg-neutral-800`}>
-    <ConnectButton showBalance={true} accountStatus="" chainStatus="icon" />
+    <ConnectButton showBalance={true} chainStatus={"icon"} accountStatus={"none"}  />
   </div>
 );
 
