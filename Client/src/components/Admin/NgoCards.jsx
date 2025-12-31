@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Meteors } from "../ui/BoxEffect";
 import { MdPictureAsPdf } from "react-icons/md";
-import { RiCheckDoubleFill } from "react-icons/ri";
+import { RiCheckDoubleFill, RiCheckFill } from "react-icons/ri";
 import axios from "../../utils/axios";
 import { toast } from "react-toastify";
 
@@ -32,9 +32,9 @@ export function NgoCards({ name, Website, SocialMedia, registered_address, regis
           className="absolute inset-0 h-full w-full  scale-[0.70] transform rounded-full  bg-red-500 bg-gradient-to-r from-blue-500 to-teal-500 blur-3xl" />
 
 
-        <div onDoubleClick={() => handleCheck({ id })}
+        <div
           className="relative flex h-[270px] flex-col items-start  justify-start rounded-2xl border border-gray-300 bg-gray-100 px-4 py-5 shadow-xl ">
-          {(is_verified || doubleChecked) && <div className="absolute bottom-0 right-0  h-10 w-10  rounded-full flex items-center justify-center bg-red-500 bg-gradient-to-r from-blue-500 to-teal-500 "><RiCheckDoubleFill /></div>}
+          <div onClick={(e) => { handleCheck({ id }); e.stopPropagation(); }} className="absolute bottom-0 right-0  h-10 w-10  rounded-full flex items-center justify-center bg-red-500 bg-gradient-to-r from-blue-500 to-teal-500 cursor-pointer">{(is_verified || doubleChecked) ? <RiCheckDoubleFill /> : <RiCheckFill />}</div>
 
           <div className=" overflow-x-hidden  overflow-y-scroll ">
             <h1 className="relative z-5 mb-2 text-xl font-bold text-black">
@@ -64,10 +64,12 @@ export function NgoCards({ name, Website, SocialMedia, registered_address, regis
             <h1 className="relative z-5 mb-2 text-xl font-bold text-black">
               Phone no.:-{phone}
             </h1>
+            <div className="w-fit">
+              <a href={document} target="_blank" className="rounded-lg  ">
+                <MdPictureAsPdf size={30} />
+              </a>
+            </div>
 
-            <a href={document} target="_blank" className="rounded-lg  ">
-              <MdPictureAsPdf size={30} />
-            </a>
           </div>
 
 
