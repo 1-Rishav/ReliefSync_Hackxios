@@ -484,7 +484,7 @@ exports.areaEnquiry = catchAsync(async (req, res, next) => {
     console.log(predictedData)
     if (predictedData === 1) {
       const predictedDamageData = await predictFloodDamage({ ...payload })
-      let severity;
+      let severity='Low';
       if (predictedDamageData === 1) {
         severity = 'Low';
       } else if (predictedDamageData === 2) {
@@ -503,7 +503,7 @@ exports.areaEnquiry = catchAsync(async (req, res, next) => {
     }
     const predictFireData = await predictWildFire({ ...wildfirePayload });
     if (predictFireData.occurrence === 1) {
-      let severity;
+      let severity='Low';
       if (predictFireData.severity === 1) {
         severity = 'Low';
       } else if (predictFireData.severity === 2) {
@@ -521,7 +521,7 @@ exports.areaEnquiry = catchAsync(async (req, res, next) => {
     }
     const predictDry = await predictDrought({ ...droughtPayload });
     if (predictDry.occurrence === 1) {
-      let severity;
+      let severity='Low';
       if (predictDry.severity === 1) {
         severity = 'Low';
       } else if (predictDry.severity === 2) {
@@ -539,7 +539,7 @@ exports.areaEnquiry = catchAsync(async (req, res, next) => {
     }
     const predictShock = await predictEarthquake({ ...earthQuakePayload });
     if (predictShock.occurrence === 1) {
-      let severity;
+      let severity='Low';
       if (predictShock.severity === 1) {
         severity = 'Low';
       } else if (predictShock.severity === 2) {
@@ -942,13 +942,6 @@ if (mp3Path && fs.existsSync(mp3Path)) {
   });
 }
 
-if (audioFile?.path && fs.existsSync(audioFile.path)) {
-  attachments.push({
-    name: "voice_message.webm",
-    content: fs.readFileSync(audioFile.path).toString("base64"),
-  });
-}
-
   try {
     await axios.post(
       "https://api.brevo.com/v3/smtp/email",
@@ -959,8 +952,7 @@ if (audioFile?.path && fs.existsSync(audioFile.path)) {
         },
         to: [{ email: ngo_Email }],
         subject: subject,
-        htmlContent: htmlBody,
-        attachment:attachments,
+        htmlContent: htmlBody
       },
       {
         headers: {
@@ -970,6 +962,7 @@ if (audioFile?.path && fs.existsSync(audioFile.path)) {
       }
     );
   } catch (err) {
+    console.log(err);
     if (mp3Path) {
       fs.unlink(mp3Path, () => { });
     }
