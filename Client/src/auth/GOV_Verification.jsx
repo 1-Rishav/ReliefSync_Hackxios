@@ -14,6 +14,7 @@ const GOV_Verification = () => {
     current_state: "",
     office_location: "",
   })
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -51,8 +52,15 @@ const GOV_Verification = () => {
       await dispatch(agentEntry(formData))
     } catch (error) {
       console.log(error)
+    }finally {
+    setLoading(false);
+    setEnteredData({
+      official_id: "",
+      department: "",
+      badge_number: "",
+      current_state: "",
+      office_location: "",})
     }
-    setEnteredData('')
   }
   return (
     <>
@@ -126,7 +134,29 @@ const GOV_Verification = () => {
                 <Input variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' label="Current State" type="text" isRequired name="current_state" value={enteredData.current_state} onChange={handleChange} />
               </div>
               <Input variant='flat' radius='sm' color='success' labelPlacement='outside' size='lg' label="Office Location" type="text" isRequired name="office_location" value={enteredData.office_location} onChange={handleChange} />
-              <Button isDisabled={!isFormComplete} size='md' variant='shadow' color='success' radius='sm' fullWidth className='mt-2' onClick={handleSubmit}>SUBMIT</Button>
+              <Button isLoading={loading}
+          spinner={
+        <svg
+          className="animate-spin h-5 w-5 text-current"
+          fill="none"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          />
+          <path
+            className="opacity-75"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            fill="currentColor"
+          />
+        </svg>
+      } isDisabled={!isFormComplete} size='md' variant='shadow' color='success' radius='sm' fullWidth className='mt-2' onClick={handleSubmit}>SUBMIT</Button>
 
             </div>
 
