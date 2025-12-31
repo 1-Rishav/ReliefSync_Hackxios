@@ -5,7 +5,7 @@ const ONESIGNAL_APP_ID = process.env.ONESIGNAL_APP_ID;
 const ONESIGNAL_API_KEY = process.env.ONESIGNAL_API_KEY;
 const ONESIGNAL_URL = process.env.ONESIGNAL_URL;
 
-exports.notifySegment = async (req, res) => {
+exports.notifySegment = async (req, res, next) => {
   const userId = req.user._id;
   try {
     const body = {
@@ -50,7 +50,7 @@ exports.agenticEmergency = async ({ userId, dangerLevel = '', name = '', reason 
     },
     headings: { "en": "🚨 ReliefSync Urgent Help " },
     contents: {
-      "en": `• Name: ${name.charAt(0).toUpperCase() + survivor.slice(1)}\n` +
+      "en": `• Name: ${name.charAt(0).toUpperCase() + name.slice(1)}\n` +
         `• Danger: ${dangerLevel}\n` +
         `• Reason: ${reason}\n`
     },
@@ -116,6 +116,7 @@ const buildMessage = async (pushType, data) => {
     disasterType = '',
     riskLevel = '',
     requestType = '',
+    description= '',
     survivor = '',
     count = 1,
     severity = '',
@@ -128,7 +129,7 @@ const buildMessage = async (pushType, data) => {
   switch (pushType) {
 
     case "REQUESTER":
-      const shortDescription = truncateText(requestType, 25);
+      const shortDescription = truncateText(description, 25);
       return {
         title: "🚨 ReliefSync Alert",
         message:
@@ -169,7 +170,7 @@ const buildMessage = async (pushType, data) => {
   }
 }
 
-exports.pushToRoles = catchAsync(async ({
+exports.pushToRoles = async ({
   roles = [],
   pushType = "",
   data = {},
@@ -187,26 +188,18 @@ exports.pushToRoles = catchAsync(async ({
     });
   });
 
-  if (excludeUserId) {
-    filters.push({ operator: "AND" });
-    filters.push({
-      field: "external_id",
-      relation: "!=",
-      value: String(excludeUserId)
-    });
-  }
-
-  const { title, message } = buildMessage(pushType, data);
+  const {title , message} = await buildMessage(pushType, data);
 
   const body = {
     app_id: ONESIGNAL_APP_ID,
     target_channel: "push",
     filters,
     headings: { en: title },
-    contents: { en: message }
+    contents: { en: message },
+    exclude_external_user_ids: [String(excludeUserId)]
   };
 
-  const response = await axios.post(ONESIGNAL_URL, body, {
+const response = await axios.post(ONESIGNAL_URL, body, {
     headers: {
       "Content-Type": "application/json;charset=utf-8",
       Authorization: `Key ${ONESIGNAL_API_KEY}`,
@@ -214,5 +207,5 @@ exports.pushToRoles = catchAsync(async ({
   });
   console.log("Push to roles response:", response.data);
   return response.data;
-});
+};
 
