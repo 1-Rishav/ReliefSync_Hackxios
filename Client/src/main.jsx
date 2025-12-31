@@ -13,7 +13,7 @@ import './index.css'
 import App from './App.jsx'
 
 async function initializeApp() {
-  //await setupOneSignal();
+  await setupOneSignal();
   createRoot(document.getElementById('root')).render(
 
     <StrictMode>
