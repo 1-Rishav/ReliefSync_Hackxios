@@ -32,7 +32,8 @@ try {
       account,
     });
 
-    const receipt = await waitForTransactionReceipt(config, { hash });
+    const receipt = await waitForTransactionReceipt(config, { hash});
+    console.log("Help Request Receipt:", receipt);
     return receipt;
   } catch (error) {
     console.error("Error submission :", error);
@@ -87,7 +88,7 @@ try {
       account,
     });
 
-    const receipt = await waitForTransactionReceipt(config, { hash });
+    const receipt = await waitForTransactionReceipt(config, { hash});
     return receipt;
   } catch (error) {
     console.error("Error submission :", error);
@@ -140,7 +141,7 @@ try {
       account,
     });
 
-    const receipt = await waitForTransactionReceipt(config, { hash });
+    const receipt = await waitForTransactionReceipt(config, { hash});
     return receipt;
   } catch (error) {
     console.error("Error submission :", error);
