@@ -69,7 +69,7 @@ exports.sendOtp = catchAsync(async (req, res, next) => {
     {
       sender: {
         name: 'ReliefSync',
-        email: `${process.env.EMAIL}`,
+        email: process.env.EMAIL,
       },
       to: [{ email: user.email }],
       subject: "Verification OTP",
