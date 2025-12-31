@@ -30,7 +30,12 @@ app.use(morgan('combined'));
 const limiter = rateLimit({
     windowMs:60*60*1000,
     limit:100,
-    message:'Too many Requests from this IP, Please try again in an hour'
+    handler: (req, res) => {
+    return res.status(429).json({
+      success: false,
+      message: "Too many requests, try again after an hour.",
+    });
+  },
 })
 app.use(limiter)
 app.use(routes);
