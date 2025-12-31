@@ -284,7 +284,6 @@ export function TaskDetailModal({ isOpen, onOpenChange, requestType, refreshData
                 await dispatch(toggleAgent())
             }
             toast.success("Delivery Verified Successfully");
-            refreshData((prev) => !prev);
             const notifyData = {
                 userId: requestType.userId,
                 title: 'ReliefSync - Delivery Verified',
@@ -293,7 +292,8 @@ export function TaskDetailModal({ isOpen, onOpenChange, requestType, refreshData
             }
             setTimeout(async()=>{
             await dispatch(notifyRequester(notifyData))
-            }, 300)
+            }, 200)
+            refreshData((prev) => !prev);
         } else {
             toast.error("Verification Failed");
         }
