@@ -12,7 +12,7 @@ import { motion } from 'motion/react'
 import logo from "../assets/Logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchUnverifiedNGOsCount, fetchUnverifiedAgentsCount } from "../store/slices/userSlice";
+import { fetchUnverifiedNGOsCount, fetchUnverifiedAgentsCount, getUser } from "../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const MenuItem = ({ icon, label, sidebarOpen, active, extra, onClick }) => (
@@ -39,9 +39,13 @@ export default function Waitlist() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getUser())
+  },[dispatch])
   const { firstName, lastName, profile, role } = useSelector((state) => state.user)
 
   useEffect(() => {
+    if (!role) return;
     const fetchuser = async () => {
       if (role === 'ngo') {
         const count = await dispatch(fetchUnverifiedNGOsCount())
@@ -53,7 +57,7 @@ export default function Waitlist() {
       }
     }
     fetchuser();
-  }, [])
+  }, [role, dispatch]);
   const handleProfile = async () => {
     navigate('/auth/profile');
   }
@@ -222,7 +226,7 @@ export default function Waitlist() {
                   ease: "easeInOut"
                 }}
               >
-                <div className="text-3xl font-bold my-2">{unverifiedCount.unverifiedAgents}</div>
+                <div className="text-3xl font-bold my-2">{role==="gov_Agent"?unverifiedCount.unverifiedAgents:unverifiedCount.unverifiedNGOs}</div>
                 <p className="text-sm text-gray-500 mt-1">YOUR PLACE ON THE WAITLIST</p>
               </motion.div>
 
